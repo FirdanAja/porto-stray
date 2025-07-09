@@ -1,10 +1,4 @@
 import { useEffect } from "react";
-import {
-  FaEnvelope,
-  FaWhatsapp,
-  FaLinkedin,
-  FaInstagram,
-} from "react-icons/fa";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -46,10 +40,11 @@ const Hero = () => {
 
       {/* About & Contact */}
       <div
-        className="w-full max-w-4xl mx-auto mt-20 px-6 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-28 lg:gap-40"
+        className="w-full max-w-7xl mx-auto mt-20 px-6 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-28 lg:gap-20 items-start"
         data-aos="fade-left"
       >
-        <div className="text-left">
+        {/* About Me */}
+        <div className="text-left max-w-lg">
           <h2 className="text-xl font-bold text-[#243A07] mb-2">About Me</h2>
           <p className="text-md text-gray-900 leading-relaxed">
             I am <b>Syahrul Ahkam</b>, a graphic designer experienced in
@@ -60,32 +55,48 @@ const Hero = () => {
           </p>
         </div>
 
-        <div className="text-left">
+        {/* Contact - Geser ke kanan */}
+        <div className="text-left md:ml-auto">
           <h2 className="text-xl font-bold text-[#243A07] mb-2">Contact</h2>
           <ul className="text-md space-y-3 text-black">
             <li className="flex items-center gap-3">
-              <FaEnvelope />
+              <img
+                src="/assets/icon/mail.svg"
+                alt="email"
+                className="w-5 h-5"
+              />
               <span>strayncut@gmail.com</span>
             </li>
             <li className="flex items-center gap-3">
-              <FaWhatsapp />
+              <img
+                src="/assets/icon/wa.svg"
+                alt="whatsapp"
+                className="w-5 h-5"
+              />
               <span>+62 888 113 0084</span>
             </li>
             <li className="flex items-center gap-3">
-              <FaLinkedin />
+              <img
+                src="/assets/icon/linkedin.svg"
+                alt="linkedin"
+                className="w-5 h-5"
+              />
               <span>linkedin.com/in/syahrulahkam</span>
             </li>
             <li className="flex items-center gap-3">
-              <FaInstagram />
+              <img
+                src="/assets/icon/ig.svg"
+                alt="instagram"
+                className="w-5 h-5"
+              />
               <span>@strayncut</span>
             </li>
           </ul>
         </div>
       </div>
 
-      {/* Garis bawah */}
-      <div className="px-6 md:px-20">
-        <hr className="border-t border-gray-900 border-[1px] my-8" />
+      <div className="px-6 md:px-20 container mx-auto">
+        <hr className="border-t border-[#B2B2B2] border-[1px] my-8" />
       </div>
     </section>
   );

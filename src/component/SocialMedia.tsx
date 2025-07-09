@@ -1,14 +1,41 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+const posters = [
+  "/assets/img/social/1.png",
+  "/assets/img/social/2.png",
+  "/assets/img/social/3.png",
+  "/assets/img/social/4.png",
+  "/assets/img/social/5.png",
+  "/assets/img/social/6.png",
+  "/assets/img/social/7.png",
+  "/assets/img/social/8.png",
+  "/assets/img/social/9.png",
+];
 
 const SectionSocialMedia = () => {
+  const [popupIndex, setPopupIndex] = useState<number | null>(null);
+
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
+
+  const handleNext = () => {
+    if (popupIndex !== null) {
+      setPopupIndex((popupIndex + 1) % posters.length);
+    }
+  };
+
+  const handlePrev = () => {
+    if (popupIndex !== null) {
+      setPopupIndex((popupIndex - 1 + posters.length) % posters.length);
+    }
+  };
+
   return (
     <section
-      className="relative bg-[#DCF4BC] overflow-hidden py-20 pb-32 md:pb-[200px] px-6 md:px-16 lg:px-24"
+      className="relative container mx-auto bg-limeLight overflow-hidden py-20 pb-32 md:pb-[200px] px-6 md:px-16 lg:px-24"
       id="SosialMedia"
     >
       {/* Layer putih atas */}
@@ -17,38 +44,81 @@ const SectionSocialMedia = () => {
       <div className="max-w-7xl mx-auto relative z-20">
         {/* Title */}
         <h2
-          className="text-[48px] leading-tight md:text-[100px] md:leading-[80px] font-extrabold text-[#243A07] mb-12 mt-5"
+          className="text-[48px] leading-tight md:text-[100px] md:leading-[80px] font-extrabold text-greenDark mb-12 mt-5"
           data-aos="fade-right"
         >
           SOCIAL <br className="hidden md:block" /> MEDIA
         </h2>
 
-        {/* Layer 1: Kotak background */}
-        <div
-          className="bg-[#DCF4BC] rounded-xl overflow-hidden shadow-md w-full max-w-5xl mx-auto"
-          data-aos="zoom-in"
-        >
-          <img
-            src="/assets/img/social.png"
-            alt="Social Media Background"
-            className="w-full h-auto max-h-[600px] object-cover"
-          />
+        {/* Auto Scroll Posters + Pause When Modal Open */}
+        <div className="relative overflow-hidden group" data-aos="fade-up">
+          <div
+            className={`flex w-max gap-4 transition-all duration-300 ${
+              popupIndex === null ? "animate-scrollX" : ""
+            }`}
+          >
+            {[...posters, ...posters].map((src, i) => (
+              <div
+                key={i}
+                onClick={() => setPopupIndex(i % posters.length)}
+                className={`cursor-pointer ${
+                  i % 9 === 2 || i % 9 === 3 ? "w-[360px]" : "w-[300px]"
+                } h-[400px] overflow-hidden shadow-md border border-[#d2ebb2] bg-white flex-shrink-0`}
+              >
+                <img
+                  src={src}
+                  alt={`Poster ${(i % 9) + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
         </div>
-
-        {/* PNG Kanan (mockup HP) */}
-        <img
-          src="/assets/img/umkm.png"
-          alt="Social Media Mockup"
-          className="hidden sm:block absolute right-0 bottom-0 w-[220px] sm:w-[400px] md:w-[600px] lg:w-[800px] translate-x-10 sm:translate-x-20 md:translate-x-40 -translate-y-32 md:-translate-y-72 pointer-events-none"
-        />
-
-        {/* PNG Kiri Bawah */}
-        <img
-          src="/assets/img/alope.png"
-          alt="Dekorasi Kiri"
-          className="hidden sm:block absolute left-0 bottom-[-120px] sm:bottom-[-180px] w-[120px] sm:w-[200px] lg:w-[800px] -translate-x-10 sm:-translate-x-20 md:-translate-x-40 pointer-events-none"
-        />
       </div>
+
+      {/* Modal Pop-up with Carousel */}
+      {popupIndex !== null && (
+        <div
+          className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-md flex items-center justify-center"
+          onClick={() => setPopupIndex(null)}
+        >
+          <div
+            className="relative max-w-[90vw] max-h-[90vh] p-4 bg-white rounded-xl shadow-2xl"
+            onClick={(e) => e.stopPropagation()} // Klik dalam modal tidak menutup
+          >
+            {/* Tombol Close */}
+            <button
+              onClick={() => setPopupIndex(null)}
+              className="absolute top-2 right-2 text-2xl font-bold text-gray-600 hover:text-black"
+            >
+              ×
+            </button>
+
+            {/* Tombol Kiri */}
+            <button
+              onClick={handlePrev}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-gray-100 p-2 rounded-sm shadow hover:bg-gray-300"
+            >
+              ←
+            </button>
+
+            {/* Tombol Kanan */}
+            <button
+              onClick={handleNext}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-100 p-2 rounded-sm shadow hover:bg-gray-300"
+            >
+              →
+            </button>
+
+            {/* Gambar */}
+            <img
+              src={posters[popupIndex]}
+              alt="Popup"
+              className="max-w-full max-h-[80vh] object-contain rounded"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

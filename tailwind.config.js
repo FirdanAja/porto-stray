@@ -10,6 +10,15 @@ export default {
         limeLight: "#DCF4BC",
         graySoft: "#F7F7F7",
       },
+      keyframes: {
+        scrollX: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        scrollX: "scrollX 40s linear infinite",
+      },
     },
   },
   plugins: [],
