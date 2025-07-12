@@ -115,7 +115,7 @@ const SectionUiux = () => {
         {/* Mobile */}
         <div className="block md:hidden mt-16">
           <div className="flex flex-col gap-6">
-            {/* ALOPE */}
+            {/* ALOPE CARD */}
             <div className="bg-[#DCF4BC] rounded-xl w-full shadow-md border border-[#c5e7a7] relative overflow-visible z-0">
               <img
                 src="/assets/img/laptop1.png"
@@ -130,27 +130,29 @@ const SectionUiux = () => {
                   alope.id
                 </p>
               </div>
+
+              {/* Expand Area */}
               <div
                 className={`transition-all duration-[1200ms] ease-in-out px-4 ${
                   expandAlope
-                    ? "max-h-screen opacity-100 scale-100 pb-6"
-                    : "max-h-[220px] opacity-60 scale-95 pb-2"
+                    ? "max-h-[3000px] opacity-100 scale-100 pb-6"
+                    : "max-h-2 opacity-0 scale-95 pb-0"
                 } overflow-hidden`}
               >
-                {expandAlope &&
-                  ["alope1.png", "alope2.png"].map((img, idx) => (
-                    <img
-                      key={idx}
-                      src={`/assets/img/${img}`}
-                      alt={`ALOPE UI ${idx + 1}`}
-                      className={`rounded-md ${
-                        idx > 0 ? "mt-2" : ""
-                      } cursor-pointer`}
-                      onClick={() => openModal(`/assets/img/${img}`)}
-                    />
-                  ))}
+                {["alope1.png", "alope2.png"].map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={`/assets/img/${img}`}
+                    alt={`ALOPE UI ${idx + 1}`}
+                    className={`rounded-md w-full ${
+                      idx > 0 ? "mt-2" : ""
+                    } cursor-pointer`}
+                    onClick={() => openModal(`/assets/img/${img}`)}
+                  />
+                ))}
               </div>
-              <div className="absolute left-1/2 -bottom-4 transform -translate-x-1/2 z-50">
+
+              <div className="absolute left-1/2 -bottom-3 transform -translate-x-1/2 z-50">
                 <button
                   onClick={() => setExpandAlope(!expandAlope)}
                   className="text-xs text-green-900 font-semibold bg-[#DCF4BC] min-w-[110px] min-h-[36px] px-4 py-1 rounded-full flex flex-col items-center shadow-md"
@@ -170,7 +172,7 @@ const SectionUiux = () => {
               </div>
             </div>
 
-            {/* SRIBU */}
+            {/* SRIBU CARD */}
             <div className="bg-[#DCF4BC] rounded-xl w-full shadow-md border border-[#c5e7a7] relative overflow-visible z-0">
               <img
                 src="/assets/img/laptop2.png"
@@ -185,27 +187,29 @@ const SectionUiux = () => {
                   sribu.com
                 </p>
               </div>
+
+              {/* Expand Area */}
               <div
                 className={`transition-all duration-[1200ms] ease-in-out px-4 ${
                   expandSribu
-                    ? "max-h-screen opacity-100 scale-100 pb-6"
-                    : "max-h-[220px] opacity-60 scale-95 pb-2"
+                    ? "max-h-[3000px] opacity-100 scale-100 pb-6"
+                    : "max-h-2 opacity-0 scale-95 pb-0"
                 } overflow-hidden`}
               >
-                {expandSribu &&
-                  ["sribu1.png", "sribu2.png"].map((img, idx) => (
-                    <img
-                      key={idx}
-                      src={`/assets/img/${img}`}
-                      alt={`SRIBU UI ${idx + 1}`}
-                      className={`rounded-md ${
-                        idx > 0 ? "mt-2" : ""
-                      } cursor-pointer`}
-                      onClick={() => openModal(`/assets/img/${img}`)}
-                    />
-                  ))}
+                {["sribu1.png", "sribu2.png"].map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={`/assets/img/${img}`}
+                    alt={`SRIBU UI ${idx + 1}`}
+                    className={`rounded-md w-full ${
+                      idx > 0 ? "mt-2" : ""
+                    } cursor-pointer`}
+                    onClick={() => openModal(`/assets/img/${img}`)}
+                  />
+                ))}
               </div>
-              <div className="absolute left-1/2 -bottom-4 transform -translate-x-1/2 z-50">
+
+              <div className="absolute left-1/2 -bottom-3 transform -translate-x-1/2 z-50">
                 <button
                   onClick={() => setExpandSribu(!expandSribu)}
                   className="text-xs text-green-900 font-semibold bg-[#DCF4BC] min-w-[110px] min-h-[36px] px-4 py-1 rounded-full flex flex-col items-center shadow-md"
@@ -227,7 +231,7 @@ const SectionUiux = () => {
           </div>
         </div>
 
-        {/* MOBILE Judul Bagian */}
+        {/* Mobile Title + Gambar */}
         <div className="mb-2 mt-10">
           <h3
             className="text-[36px] md:text-[100px] font-extrabold text-[#243A07] mb-6 md:-mb-10"
@@ -246,7 +250,7 @@ const SectionUiux = () => {
         </div>
       </div>
 
-      {/* Modal */}
+      {/* MODAL */}
       {showModal && (
         <div
           className="fixed inset-0 z-[999] bg-black/60 backdrop-blur-sm flex items-center justify-center px-4"
@@ -258,6 +262,7 @@ const SectionUiux = () => {
             className="w-auto h-auto max-w-[95vw] max-h-[95vh] object-contain rounded-xl shadow-xl"
             onClick={(e) => e.stopPropagation()}
           />
+
           <button
             onClick={closeModal}
             className="absolute top-6 right-6 text-white text-3xl font-bold"
