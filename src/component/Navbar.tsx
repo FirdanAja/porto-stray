@@ -6,9 +6,11 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 container mx-auto bg-[#F7F7F7] transition-shadow duration-300 px-6 md:px-20 py-4 flex justify-between items-center text-sm">
       {/* Logo */}
-      <div className="flex items-center">
-        <h1 className="text-3xl font-bold mr-2">Portofolio</h1>
-        <span className="text-gray-800 text-lg">Syahrul Ahkam</span>
+      <div className="flex items-end">
+        <h1 className="text-3xl font-bold mr-2 leading-none">Portofolio</h1>
+        <span className="text-gray-800 text-lg relative translate-y-[2px]">
+          Syahrul Ahkam
+        </span>
       </div>
 
       {/* Mobile Menu Button */}
@@ -72,27 +74,24 @@ const NavLinks = ({ mobile = false }: { mobile?: boolean }) => {
       }`}
     >
       <a href="#Hero" className={baseClass}>
-        <span className="pb-1">Home</span>
+        <span className="block">Home</span>
         <span className={underlineClass}></span>
       </a>
 
       <a href="#Hero" className={baseClass}>
-        <span className="pb-1">About Me</span>
+        <span className="block">About Me</span>
         <span className={underlineClass}></span>
       </a>
 
-      {/* Portofolio Link */}
       {mobile ? (
-        // Mobile: Hanya teks, tidak ada dropdown
         <a href="#Logo" className={baseClass}>
-          <span className="pb-1">Portofolio</span>
+          <span className="block">Portofolio</span>
           <span className={underlineClass}></span>
         </a>
       ) : (
-        // Desktop: dropdown muncul saat hover
         <div className="relative group">
           <button className={`${baseClass} flex items-center`}>
-            <span className="pb-1">Portofolio</span>
+            <span className="block">Portofolio</span>
             <svg
               className="w-4 h-4 ml-1"
               fill="none"
@@ -133,7 +132,7 @@ const NavLinks = ({ mobile = false }: { mobile?: boolean }) => {
       )}
 
       <a href="#Awards" className={baseClass}>
-        <span className="pb-1">Awards</span>
+        <span className="block">Awards</span>
         <span className={underlineClass}></span>
       </a>
 

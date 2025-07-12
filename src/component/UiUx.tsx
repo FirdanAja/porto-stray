@@ -5,21 +5,31 @@ import { useEffect, useState } from "react";
 const SectionUiux = () => {
   const [expandAlope, setExpandAlope] = useState(false);
   const [expandSribu, setExpandSribu] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalImage, setModalImage] = useState<string>("");
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
+  const openModal = (src: string) => {
+    setModalImage(src);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setModalImage("");
+  };
+
   return (
     <section
-      className="relative container mx-auto bg-[#B8E979] overflow-hidden py-20 px-6 md:px-16 lg:px-24"
+      className="relative bg-[#B8E979] overflow-hidden py-20 px-6 md:px-16 lg:px-24"
       id="UiUx"
     >
-      {/* Background putih atas */}
-      <div className="absolute top-0 left-0 w-full h-48 bg-white z-0"></div>
+      <div className="absolute top-0 left-0 w-full h-48 bg-white z-0" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Judul */}
         <h2
           className="text-[48px] md:text-[100px] leading-tight md:leading-[85px] font-extrabold text-[#243A07] mb-4 mt-7"
           data-aos="fade-right"
@@ -27,10 +37,10 @@ const SectionUiux = () => {
           UI/UX <br className="hidden md:block" /> WEBSITE
         </h2>
 
-        {/* ======= DESKTOP VERSION ======= */}
+        {/* Desktop */}
         <div className="hidden md:block">
-          {/* ALOPE Desktop */}
-          <div className="flex flex-col lg:flex-row gap-6 px-0 md:px-10 items-start mt-16 md:mt-32 mb-2 md:mb-0">
+          {/* ALOPE */}
+          <div className="flex flex-col lg:flex-row gap-6 md:px-10 items-start mt-16 md:mt-32">
             <div className="w-full lg:w-[55%] flex flex-col items-center">
               <img
                 src="/assets/img/laptop1.png"
@@ -38,9 +48,9 @@ const SectionUiux = () => {
                 className="w-full max-w-[750px] h-auto z-10"
                 data-aos="fade-right"
               />
-              <div className="w-[530px] items-end mt-1 mb-6">
-                <div className="bg-white rounded-l-2xl px-6 py-4 w-[300px] md:w-[1150px] shadow-md">
-                  <p className="text-sm text-gray-800 font-semibold uppercase tracking-wide">
+              <div className="w-[530px] mt-1 mb-6">
+                <div className="bg-white rounded-l-2xl px-6 py-4 w-[300px] md:w-[1302px] shadow-md">
+                  <p className="text-sm text-gray-800 font-semibold uppercase">
                     Website
                   </p>
                   <p className="text-lg md:text-3xl font-extrabold text-[#243A07]">
@@ -49,24 +59,24 @@ const SectionUiux = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full lg:w-[30%] md:-mt-60 flex flex-col md:flex-row gap-4 md:gap-0 md:-translate-x-20">
-              <img
-                src="/assets/img/alope1.png"
-                alt="UI ALOPE 1"
-                className="w-full h-auto md:h-[900px] object-contain md:translate-x-5 md:-translate-y-60"
-                data-aos="fade-up"
-              />
-              <img
-                src="/assets/img/alope2.png"
-                alt="UI ALOPE 2"
-                className="w-full h-auto md:h-[900px] object-contain md:translate-x-26 md:-translate-y-60"
-                data-aos="fade-down"
-              />
+            <div className="w-full lg:w-[30%] md:-mt-60 flex flex-col md:flex-row gap-4 md:-translate-x-20">
+              {["alope1.png", "alope2.png"].map((img, idx) => (
+                <img
+                  key={idx}
+                  src={`/assets/img/${img}`}
+                  alt={`ALOPE UI ${idx + 1}`}
+                  className={`w-full h-auto md:h-[900px] object-contain cursor-pointer ${
+                    idx === 0 ? "md:translate-x-5" : "md:translate-x-26"
+                  } md:-translate-y-60`}
+                  onClick={() => openModal(`/assets/img/${img}`)}
+                  data-aos={idx === 0 ? "fade-up" : "fade-down"}
+                />
+              ))}
             </div>
           </div>
 
-          {/* SRIBU Desktop */}
-          <div className="flex flex-col lg:flex-row-reverse -mt-20 px-0 md:px-10 gap-6 items-start mb-16 md:mb-20">
+          {/* SRIBU */}
+          <div className="flex flex-col lg:flex-row-reverse -mt-20 md:px-10 gap-6 items-start mb-16 md:mb-20">
             <div className="w-full lg:w-[55%] flex flex-col items-center">
               <img
                 src="/assets/img/laptop2.png"
@@ -74,9 +84,9 @@ const SectionUiux = () => {
                 className="w-full max-w-[750px] h-auto z-10 mt-10 md:mt-20"
                 data-aos="fade-left"
               />
-              <div className="w-[1710px] justify-start mt-1 mb-6">
+              <div className="w-[1710px] mt-1 mb-6">
                 <div className="bg-white rounded-r-2xl text-end px-6 py-4 w-[300px] md:w-[1125px] shadow-md">
-                  <p className="text-sm text-gray-800 font-semibold uppercase tracking-wide">
+                  <p className="text-sm text-gray-800 font-semibold uppercase">
                     Re Design Website
                   </p>
                   <p className="text-lg md:text-3xl font-extrabold text-[#243A07]">
@@ -85,28 +95,28 @@ const SectionUiux = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full lg:w-[30%] flex flex-col md:flex-row md:-mt-40 gap-4 md:gap-0 md:-translate-x-52">
-              <img
-                src="/assets/img/sribu1.png"
-                alt="UI SRIBU 1"
-                className="w-full h-auto md:h-[900px] object-contain md:-translate-x-56 md:-translate-y-40"
-                data-aos="fade-up"
-              />
-              <img
-                src="/assets/img/sribu2.png"
-                alt="UI SRIBU 2"
-                className="w-full h-auto md:h-[900px] object-contain md:-translate-x-60 md:-translate-y-40"
-                data-aos="fade-down"
-              />
+            <div className="w-full lg:w-[30%] flex flex-col md:flex-row md:-mt-40 gap-2 md:-translate-x-56">
+              {["sribu1.png", "sribu2.png"].map((img, idx) => (
+                <img
+                  key={idx}
+                  src={`/assets/img/${img}`}
+                  alt={`SRIBU UI ${idx + 1}`}
+                  className={`w-full h-auto md:h-[900px] object-contain cursor-pointer ${
+                    idx === 0 ? "md:-translate-x-56" : "md:-translate-x-60"
+                  } md:-translate-y-50`}
+                  onClick={() => openModal(`/assets/img/${img}`)}
+                  data-aos={idx === 0 ? "fade-up" : "fade-down"}
+                />
+              ))}
             </div>
           </div>
         </div>
 
-        {/* ======= MOBILE VERSION ======= */}
+        {/* Mobile */}
         <div className="block md:hidden mt-16">
-          <div className="flex flex-wrap gap-4 justify-center">
-            {/* ALOPE Mobile Card */}
-            <div className="bg-[#DCF4BC] rounded-xl w-[48%] shadow-md border border-[#c5e7a7] relative overflow-visible z-0">
+          <div className="flex flex-col gap-6">
+            {/* ALOPE */}
+            <div className="bg-[#DCF4BC] rounded-xl w-full shadow-md border border-[#c5e7a7] relative overflow-visible z-0">
               <img
                 src="/assets/img/laptop1.png"
                 alt="ALOPE"
@@ -120,27 +130,25 @@ const SectionUiux = () => {
                   alope.id
                 </p>
               </div>
-
               <div
-                className={`transition-all duration-700 ease-in-out overflow-hidden px-2 pb-2 ${
+                className={`transition-all duration-700 overflow-hidden px-2 pb-2 ${
                   expandAlope
-                    ? "max-h-screen opacity-100 scale-100"
+                    ? "max-h-screen"
                     : "max-h-[120px] opacity-60 scale-95"
                 }`}
               >
-                <img
-                  src="/assets/img/alope1.png"
-                  alt="ALOPE UI 1"
-                  className="rounded-md"
-                />
-                <img
-                  src="/assets/img/alope2.png"
-                  alt="ALOPE UI 2"
-                  className="rounded-md mt-2"
-                />
+                {["alope1.png", "alope2.png"].map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={`/assets/img/${img}`}
+                    alt={`ALOPE UI ${idx + 1}`}
+                    className={`rounded-md ${
+                      idx > 0 ? "mt-2" : ""
+                    } cursor-pointer`}
+                    onClick={() => openModal(`/assets/img/${img}`)}
+                  />
+                ))}
               </div>
-
-              {/* Tombol expand di luar card */}
               <div className="absolute left-1/2 -bottom-3 transform -translate-x-1/2 z-50">
                 <button
                   onClick={() => setExpandAlope(!expandAlope)}
@@ -161,8 +169,8 @@ const SectionUiux = () => {
               </div>
             </div>
 
-            {/* SRIBU Mobile Card */}
-            <div className="bg-[#DCF4BC] rounded-xl w-[48%] shadow-md border border-[#c5e7a7] relative overflow-visible z-0">
+            {/* SRIBU */}
+            <div className="bg-[#DCF4BC] rounded-xl w-full shadow-md border border-[#c5e7a7] relative overflow-visible z-0">
               <img
                 src="/assets/img/laptop2.png"
                 alt="SRIBU"
@@ -177,25 +185,24 @@ const SectionUiux = () => {
                 </p>
               </div>
               <div
-                className={`transition-all duration-700 ease-in-out overflow-hidden px-2 pb-2 ${
+                className={`transition-all duration-700 overflow-hidden px-2 pb-2 ${
                   expandSribu
-                    ? "max-h-screen opacity-100 scale-100"
+                    ? "max-h-screen"
                     : "max-h-[120px] opacity-60 scale-95"
                 }`}
               >
-                <img
-                  src="/assets/img/sribu1.png"
-                  alt="SRIBU UI 1"
-                  className="rounded-md"
-                />
-                <img
-                  src="/assets/img/sribu2.png"
-                  alt="SRIBU UI 2"
-                  className="rounded-md mt-2"
-                />
+                {["sribu1.png", "sribu2.png"].map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={`/assets/img/${img}`}
+                    alt={`SRIBU UI ${idx + 1}`}
+                    className={`rounded-md ${
+                      idx > 0 ? "mt-2" : ""
+                    } cursor-pointer`}
+                    onClick={() => openModal(`/assets/img/${img}`)}
+                  />
+                ))}
               </div>
-
-              {/* Tombol Expand - Menonjol keluar */}
               <div className="absolute left-1/2 -bottom-3 transform -translate-x-1/2 z-50">
                 <button
                   onClick={() => setExpandSribu(!expandSribu)}
@@ -219,7 +226,7 @@ const SectionUiux = () => {
         </div>
 
         {/* MOBILE Judul Bagian */}
-        <div className="mb-2 mt-10 ">
+        <div className="mb-2 mt-10">
           <h3
             className="text-[36px] md:text-[100px] font-extrabold text-[#243A07] mb-6 md:-mb-10"
             data-aos="fade-right"
@@ -236,6 +243,28 @@ const SectionUiux = () => {
           </div>
         </div>
       </div>
+
+      {/* ✅ MODAL with Blur Effect */}
+      {showModal && (
+        <div
+          className="fixed inset-0 z-[999] bg-black/60 backdrop-blur-sm flex items-center justify-center px-4"
+          onClick={closeModal}
+        >
+          <img
+            src={modalImage}
+            alt="Popup"
+            className="w-auto h-auto max-w-[95vw] max-h-[95vh] object-contain rounded-xl shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          <button
+            onClick={closeModal}
+            className="absolute top-6 right-6 text-white text-3xl font-bold"
+          >
+            &times;
+          </button>
+        </div>
+      )}
     </section>
   );
 };

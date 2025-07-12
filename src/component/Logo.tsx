@@ -39,7 +39,7 @@ const SectionLogo = () => {
 
   return (
     <section
-      className="bg-[#B8E979] mt-20 py-20 container mx-auto px-6 md:px-16 lg:px-24"
+      className="bg-[#B8E979] mt-20 py-20  container mx-auto px-6 md:px-16 lg:px-24"
       id="Logo"
     >
       <h2
@@ -92,13 +92,13 @@ const SectionLogo = () => {
                 className={`px-2 transition-all duration-700 ease-in-out overflow-hidden rounded-b-xl ${
                   isExpanded
                     ? "max-h-screen opacity-100 scale-100"
-                    : "max-h-[120px] opacity-60 scale-95"
+                    : "max-h-[150px] opacity-100 scale-95"
                 } md:max-h-full md:opacity-100 md:scale-100`}
               >
                 <img
                   src={item.img}
                   alt={item.title}
-                  className="w-full h-full object-contain rounded-md"
+                  className="w-full h-full object-contain mb-2 rounded-md"
                 />
               </div>
 

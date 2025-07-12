@@ -56,9 +56,9 @@ const Hero = () => {
         </div>
 
         {/* Contact - Geser ke kanan */}
-        <div className="text-left md:ml-auto">
+        <div className="text-left md:ml-56">
           <h2 className="text-xl font-bold text-[#243A07] mb-2">Contact</h2>
-          <ul className="text-md space-y-3 text-black">
+          <ul className="text-md space-y-0,5 text-black leading-relaxed">
             <li className="flex items-center gap-3">
               <img
                 src="/assets/icon/mail.svg"
@@ -81,7 +81,7 @@ const Hero = () => {
                 alt="linkedin"
                 className="w-5 h-5"
               />
-              <span>linkedin.com/in/syahrulahkam</span>
+              <span>syahrul ahkam</span>
             </li>
             <li className="flex items-center gap-3">
               <img
