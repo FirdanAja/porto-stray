@@ -58,14 +58,19 @@ const Hero = () => {
         {/* Contact - Geser ke kanan */}
         <div className="text-left md:ml-56">
           <h2 className="text-xl font-bold text-[#243A07] mb-2">Contact</h2>
-          <ul className="text-md space-y-0,5 text-black leading-relaxed">
+          <ul className="text-md space-y-0.5 text-black leading-relaxed">
             <li className="flex items-center gap-3">
               <img
                 src="/assets/icon/mail.svg"
                 alt="email"
                 className="w-5 h-5"
               />
-              <span>strayncut@gmail.com</span>
+              <a
+                href="mailto:strayncut@gmail.com"
+                className="hover:underline hover:decoration-[#D8E979]"
+              >
+                strayncut@gmail.com
+              </a>
             </li>
             <li className="flex items-center gap-3">
               <img
@@ -73,7 +78,14 @@ const Hero = () => {
                 alt="whatsapp"
                 className="w-5 h-5"
               />
-              <span>+62 888 113 0084</span>
+              <a
+                href="https://wa.me/628881130084"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline hover:decoration-[#D8E979]"
+              >
+                +62 888 113 0084
+              </a>
             </li>
             <li className="flex items-center gap-3">
               <img
@@ -81,7 +93,14 @@ const Hero = () => {
                 alt="linkedin"
                 className="w-5 h-5"
               />
-              <span>syahrul ahkam</span>
+              <a
+                href="https://www.linkedin.com/en/syahrulahkam"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline hover:decoration-[#D8E979]"
+              >
+                syahrul ahkam
+              </a>
             </li>
             <li className="flex items-center gap-3">
               <img
@@ -89,7 +108,14 @@ const Hero = () => {
                 alt="instagram"
                 className="w-5 h-5"
               />
-              <span>@strayncut</span>
+              <a
+                href="https://www.instagram.com/strayncut/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline hover:decoration-[#D8E979]"
+              >
+                @strayncut
+              </a>
             </li>
           </ul>
         </div>

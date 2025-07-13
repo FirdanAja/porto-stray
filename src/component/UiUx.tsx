@@ -133,7 +133,7 @@ const SectionUiux = () => {
 
               {/* Expand Area */}
               <div
-                className={`transition-all duration-[1200ms] ease-in-out px-4 ${
+                className={`transition-all duration-[1100ms] ease-in-out px-4 ${
                   expandAlope
                     ? "max-h-[3000px] opacity-100 scale-100 pb-6"
                     : "max-h-2 opacity-0 scale-95 pb-0"
@@ -190,7 +190,7 @@ const SectionUiux = () => {
 
               {/* Expand Area */}
               <div
-                className={`transition-all duration-[1200ms] ease-in-out px-4 ${
+                className={`transition-all duration-[1200ms]  px-4 ${
                   expandSribu
                     ? "max-h-[3000px] opacity-100 scale-100 pb-6"
                     : "max-h-2 opacity-0 scale-95 pb-0"
