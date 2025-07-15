@@ -16,20 +16,12 @@ const posters = [
 
 const SectionSocialMedia = () => {
   const [popupIndex, setPopupIndex] = useState<number | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
-
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % posters.length);
-  };
-
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + posters.length) % posters.length);
-  };
 
   return (
     <section
@@ -73,28 +65,7 @@ const SectionSocialMedia = () => {
         </div>
 
         {/* Progress Bar Section - Desktop Only */}
-        <div className="hidden md:flex items-center justify-center mt-6">
-          <button
-            onClick={handlePrev}
-            className="text-black px-2 hover:text-lime-600 text-xl"
-          >
-            &#8249;
-          </button>
-          <div className="relative w-[60%] h-3 bg-lime-100 rounded-full mx-4 overflow-hidden">
-            <div
-              className="absolute top-0 left-0 h-full bg-lime-800 rounded-full transition-all duration-300"
-              style={{
-                width: `${((activeIndex + 1) / posters.length) * 100}%`,
-              }}
-            />
-          </div>
-          <button
-            onClick={handleNext}
-            className="text-black px-2 hover:text-lime-600 text-xl"
-          >
-            &#8250;
-          </button>
-        </div>
+
       </div>
 
       {/* Modal */}

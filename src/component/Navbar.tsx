@@ -4,54 +4,54 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 container mx-auto bg-[#F7F7F7] transition-shadow duration-300 px-6 md:px-20 py-4 flex justify-between items-center text-sm">
-      {/* Logo */}
-      <div className="flex items-end">
-        <h1 className="text-3xl font-bold mr-2 leading-none">Portofolio</h1>
-        <span className="text-gray-800 text-lg relative translate-y-[2px]">
-          Syahrul Ahkam
-        </span>
-      </div>
+    <nav className="sticky top-0 z-50 w-full bg-[#F7F7F7]  transition-shadow duration-300">
+      <div className="max-w-screen-xl mx-auto px-6 md:px-20 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-baseline">
+          <h1 className="text-3xl font-bold mr-2 leading-none">Portofolio</h1>
+          <span className="text-gray-800 text-lg">Syahrul Ahkam</span>
+        </div>
 
-      {/* Mobile Menu Button */}
-      <div className="md:hidden">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="text-black focus:outline-none"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-black focus:outline-none"
           >
-            {isOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
-      </div>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
 
-      {/* Desktop Nav */}
-      <div className="hidden md:flex items-center space-x-6">
-        <NavLinks />
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center space-x-8">
+          <NavLinks />
+        </div>
       </div>
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-[#f7f7f7] shadow-md md:hidden z-20 px-6 py-4 space-y-3">
+        <div className="md:hidden px-6 py-4 bg-[#f7f7f7] shadow space-y-4">
           <NavLinks mobile />
         </div>
       )}
@@ -69,7 +69,7 @@ const NavLinks = ({ mobile = false }: { mobile?: boolean }) => {
     <div
       className={`${
         mobile
-          ? "flex flex-col items-center space-y-4"
+          ? "flex flex-col items-start space-y-4"
           : "flex items-center space-x-6"
       }`}
     >
@@ -83,6 +83,7 @@ const NavLinks = ({ mobile = false }: { mobile?: boolean }) => {
         <span className={underlineClass}></span>
       </a>
 
+      {/* Dropdown Portofolio */}
       {mobile ? (
         <a href="#Logo" className={baseClass}>
           <span className="block">Portofolio</span>

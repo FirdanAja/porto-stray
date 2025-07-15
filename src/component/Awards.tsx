@@ -94,7 +94,7 @@ const SectionCertificate = () => {
             <img
               src={certificates[1].img}
               alt="Skilvul Certificate"
-              className=" h-[235px] w-50"
+              className=" md:h-[235px] w-50 md:items-center"
             />
           </div>
         </div>

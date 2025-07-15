@@ -92,7 +92,7 @@ const SectionLogo = () => {
                 className={`px-2 transition-all duration-700 ease-in-out overflow-hidden rounded-b-xl ${
                   isExpanded
                     ? "max-h-screen opacity-100 scale-100"
-                    : "max-h-[150px] opacity-100 scale-95"
+                    : "max-h-[150px] sm:max-h-[110px] opacity-100 scale-95"
                 } md:max-h-full md:opacity-100 md:scale-100`}
               >
                 <img
